@@ -20,6 +20,10 @@ timerContainer.addEventListener("click", function () {
   }
 });
 
+timerContainer.addEventListener("dblclick", function () {
+  resetTimer();
+});
+
 function startTimer() {
   if (timeBegan === null) timeBegan = new Date();
 
@@ -49,4 +53,13 @@ function clockRunning() {
     (seconds = seconds < 10 ? "0" + seconds : seconds) +
     ":" +
     (milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds);
+}
+
+function resetTimer() {
+  clearInterval(startInterval);
+  timeBegan = null;
+  timeStopped = null;
+  stoppedDuration = 0;
+  document.getElementById("timer-display").innerHTML = "00:00:00";
+  flag = false;
 }
